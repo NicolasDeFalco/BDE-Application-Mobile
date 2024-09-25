@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Vue/myhomepage.dart';
-import 'Vue/profil.dart';
-import 'Vue/menujeux.dart';
-
+import 'Vue/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,8 +19,6 @@ class MyApp extends StatelessWidget {
       ),
       home: const MenuJeux(title: 'Home'),
       routes: <String, WidgetBuilder>{
-        '/route1': (BuildContext context) => MyHomePage(title: ''),
-        '/route2': (BuildContext context) => Profil(title: ''),
         '/menujeux': (BuildContext context) => MenuJeux(title: ''),
       },
     );
