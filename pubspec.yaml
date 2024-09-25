@@ -41,6 +41,7 @@ dependencies:
   flutter_gif: ^0.0.4
   connectivity: ^3.0.3
   flip_card: ^0.7.0
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

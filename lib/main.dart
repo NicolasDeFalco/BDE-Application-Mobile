@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       home: const MenuJeux(title: 'Home'),
       routes: <String, WidgetBuilder>{
         '/menujeux': (BuildContext context) => MenuJeux(title: ''),
+        '/route2': (BuildContext context) => MenuJeux(title: ''),
       },
     );
   }
