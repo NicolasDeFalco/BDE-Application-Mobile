@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 class Ecran {
+  // L'index de la page
   int page = 0;
 
+  /* 
+    On a pas besoin d'envoyer l'index de la page
+    a l'écran principal. On se contentra uniquement
+    de du setter
+  */
   void setPage(int newPage) => page = newPage;
 
+  // Renvoie les écrans en fonction de la page
   Widget pageDisplay(BuildContext context) {
     switch (page) {
       case 0:
@@ -12,7 +19,7 @@ class Ecran {
           child: Column(
             children: <Widget>[
               const Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: EdgeInsets.only(top: 50),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -56,7 +63,7 @@ class Ecran {
           child: Column(
             children: <Widget>[
               Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: EdgeInsets.only(top: 50),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

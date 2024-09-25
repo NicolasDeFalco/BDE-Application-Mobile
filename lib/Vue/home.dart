@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bde_app/Vue/page/pageview.dart';
+import 'package:bde_app/Vue/page/ecran.dart';
 
 class MenuJeux extends StatefulWidget {
   const MenuJeux({super.key, required this.title});
@@ -12,10 +12,21 @@ class MenuJeux extends StatefulWidget {
 
 class _Dames extends State<MenuJeux> {
   int _selectedIndex = 0; // Variable pour suivre l'index sélectionné
+
+  /*
+    Cette variable va contenire toute les pages
+    que l'on pourait voir a l'acueil de l'appli.
+
+    Cela nous évite de refaire un nouvelle écran a 
+    chaque fois
+  */
   Ecran ecran = new Ecran();
 
   // Méthode pour gérer la sélection des éléments de la bottom navigation bar
   void _onItemTapped(int index) {
+    /*
+      Ceci nous permetera de modifier l'affichage
+    */
     setState(() {
       ecran.setPage(index);
     });
@@ -47,7 +58,7 @@ class _Dames extends State<MenuJeux> {
         title: Text(widget.title),
         backgroundColor: Colors.brown,
       ),
-      body: ecran.pageDisplay(context),
+      body: ecran.pageDisplay(context), // Tout le écran viennent d'ici
       bottomNavigationBar:
           buildBottomNavigationBar(), // Utilisation de la BottomNavigationBar
     );
