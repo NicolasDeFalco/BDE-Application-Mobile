@@ -44,6 +44,10 @@ class _Dames extends State<MenuJeux> {
           icon: Icon(Icons.person),
           label: 'Profil',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mail),
+          label: 'Mail',
+        ),
       ],
       currentIndex: _selectedIndex, // L'index actuellement sélectionné
       selectedItemColor: Colors.brown, // Couleur de l'élément sélectionné
