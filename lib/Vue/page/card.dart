@@ -36,7 +36,7 @@ class CardItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 20.0),
                     child: const Text(
-                      'Hiking to big mountain',
+                      'Sortie à la plage prévue le 7 Août 2025',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
