@@ -74,7 +74,7 @@ class Ecran {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Image.network(
-                      'https://picsum.photos/seed/picsum/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
+                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
                       width: MediaQuery.sizeOf(context).width,
                     ),
                     const Padding(
@@ -108,7 +108,7 @@ class Ecran {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Image.network(
-                      'https://picsum.photos/seed/picsum/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
+                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
                       width: MediaQuery.sizeOf(context).width,
                     ),
                     const Padding(
@@ -146,100 +146,316 @@ class Ecran {
           Container(
             width: MediaQuery.of(context).size.width,
             child: Card(
-              color: Colors.yellow.shade400,
+              color: Colors.grey.shade200,
               child: Column(children: [
-                Text("Mon profil", style: TextStyle(fontSize: 50)),
-                SizedBox(height: 30),
-                Card(
-                  color: Colors.blue.shade400,
-                  child: Column(children: [
-                    Text("E-Mail                                           ",
-                        style: TextStyle(fontSize: 30)),
-                    Text("foo@bar.baz", style: TextStyle(fontSize: 25)),
-                    SizedBox(height: 15),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Card(
-                        color: Colors.grey.shade800,
-                        child: Text('  Modifié  ',
-                            style: TextStyle(
-                                color: Colors.grey.shade200, fontSize: 20)),
-                      ),
-                    ),
-                  ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Mon profil", style: TextStyle(fontSize: 50)),
+                        Container(
+                          height: 5,
+                          width: 240,
+                          color: Color(0xFFFFDB6F),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                SizedBox(height: 30),
-                Card(
-                  color: Colors.blue.shade400,
-                  child: Column(children: [
-                    Text("Télephone                                           ",
-                        style: TextStyle(fontSize: 30)),
-                    Text("0123456789", style: TextStyle(fontSize: 25)),
-                    SizedBox(height: 15),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Card(
-                        color: Colors.grey.shade800,
-                        child: Text('  Modifié  ',
-                            style: TextStyle(
-                                color: Colors.grey.shade200, fontSize: 20)),
-                      ),
+                SizedBox(height: 20),
+                SizedBox.fromSize(
+                  size: const Size(80, 80),
+                  child: ClipOval(
+                      child: Container(
+                    color: Colors.white,
+                    child: Icon(
+                      Icons.person_outline,
+                      size: 50.0,
                     ),
-                  ]),
+                  )),
                 ),
-                SizedBox(height: 30),
-                Card(
-                  color: Colors.blue.shade400,
-                  child: Column(
+                Text("Nicolas Sarkozy", style: TextStyle(fontSize: 20)),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("E-mail", style: TextStyle(fontSize: 30)),
+                        Container(
+                          height: 3,
+                          width: 70,
+                          color: Color(0xFFFFDB6F),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 10),
+                Column(children: [
+                  Container(
+                      width: 300,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("foo@bar.baz",
+                              style: TextStyle(
+                                  fontSize: 25, backgroundColor: Colors.white)),
+                        ],
+                      )),
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                          "Mot de passe                                        ",
-                          style: TextStyle(fontSize: 30)),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'Mot de passe',
+                      GestureDetector(
+                        onTap: () {},
+                        child: Card(
+                          color: Colors.grey.shade300,
+                          child: Text('  Modifier  ',
+                              style: TextStyle(
+                                  color: Colors.grey.shade800, fontSize: 20)),
                         ),
-                        controller: password1,
-                      ),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'Nouveau mot de passe',
-                        ),
-                        controller: password2,
-                      ),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'Confirmer votre mot de passe',
-                        ),
-                        controller: password3,
                       ),
                     ],
                   ),
+                ]),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Téléphone", style: TextStyle(fontSize: 30)),
+                        Container(
+                          height: 3,
+                          width: 100,
+                          color: Color(0xFFFFDB6F),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 10),
+                Column(children: [
+                  Container(
+                      width: 300,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("0123456789",
+                              style: TextStyle(
+                                  fontSize: 25, backgroundColor: Colors.white)),
+                        ],
+                      )),
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Card(
+                          color: Colors.grey.shade300,
+                          child: Text('  Modifier  ',
+                              style: TextStyle(
+                                  color: Colors.grey.shade800, fontSize: 20)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ]),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Mot de passe", style: TextStyle(fontSize: 30)),
+                        Container(
+                          height: 3,
+                          width: 140,
+                          color: Color(0xFFFFDB6F),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 15),
+                Column(
+                  children: [
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: 'Mot de passe',
+                      ),
+                      controller: password1,
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: 'Nouveau mot de passe',
+                      ),
+                      controller: password2,
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintText: 'Confirmer votre mot de passe',
+                      ),
+                      controller: password3,
+                    ),
+                    SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            color: Colors.grey.shade300,
+                            child: Text('  Modifier  ',
+                                style: TextStyle(
+                                    color: Colors.grey.shade800, fontSize: 20)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 15),
+                  ],
                 ),
               ]),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 50),
+          SizedBox(height: 15),
+          Container(
+            height: 7,
+            width: MediaQuery.sizeOf(context).width - 20,
+            color: Color(0xFFFFDB6F),
           ),
+          SizedBox(height: 15),
+          Container(
+            width: MediaQuery.sizeOf(context).width,
+            child: Card(
+              color: Colors.grey.shade200,
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Mes évenements", style: TextStyle(fontSize: 40)),
+                        Container(
+                          height: 5,
+                          width: 290,
+                          color: Color(0xFFFFDB6F),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 20),
+                Container(
+                    width: 420,
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.network(
+                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
+                            width: MediaQuery.sizeOf(context).width,
+                          ),
+                          const Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Giga hampter for sale",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "We are selling hampter, they are not stinky, trust me bro",
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+                SizedBox(height: 15),
+                Container(
+                    width: 420,
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.network(
+                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
+                            width: MediaQuery.sizeOf(context).width,
+                          ),
+                          const Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Dog appreciation day",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Let's have a walk with our little friend. It'll be so adorable",
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+              ]),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Card(
+              color: Colors.grey.shade300,
+              child: Text('  Se déconnecter  ',
+                  style: TextStyle(color: Colors.grey.shade800, fontSize: 20)),
+            ),
+          ),
+          SizedBox(height: 15),
         ],
       ),
     );

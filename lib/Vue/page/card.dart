@@ -15,7 +15,7 @@ class CardItem extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Image.network(
-                    'https://picsum.photos/seed/picsum/${MediaQuery.sizeOf(context).width.toInt().toString()}/300',
+                    'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/300',
                     fit: BoxFit.cover,
                     width: 1000.0),
                 Positioned(
