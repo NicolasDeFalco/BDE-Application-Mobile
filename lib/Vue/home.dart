@@ -55,8 +55,20 @@ class _Dames extends State<MenuJeux> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: Colors.brown,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Image.asset(
+              "assets/epsi.png",
+              height: 50,
+            ),
+            Image.asset(
+              "assets/wis.png",
+              height: 50,
+            )
+          ],
+        ),
+        backgroundColor: Colors.white,
       ),
       body: ecran.pageDisplay(context), // Tout le écran viennent d'ici
       bottomNavigationBar:
