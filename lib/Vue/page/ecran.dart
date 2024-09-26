@@ -4,7 +4,7 @@ import 'package:bde_app/Vue/page/card.dart';
 
 class Ecran {
   // L'index de la page
-  int page = 0;
+  int page = 1;
 
   final List<CardItem> cards = [
     CardItem(title: 'Card 1'),
@@ -465,17 +465,24 @@ class Ecran {
   }
 
   Widget mailMenu(BuildContext context) {
-    const FontWeight textWeight = FontWeight.bold; 
+    const FontWeight textWeight = FontWeight.bold;
     final TextEditingController messageController = TextEditingController();
-    final ValueNotifier<String?> selectProblemNotifier = ValueNotifier<String?>(null);
-    List<String> problems = ["Problème technique","Remboursement","Questions","Plaintes"];
-    
+    final ValueNotifier<String?> selectProblemNotifier =
+        ValueNotifier<String?>(null);
+    List<String> problems = [
+      "Problème technique",
+      "Remboursement",
+      "Questions",
+      "Plaintes"
+    ];
+
     // Méthode pour réinitialiser les valeurs
     void resetForm() {
       messageController.clear(); // Réinitialise le champ de texte
-      selectProblemNotifier.value = null; // Réinitialise la sélection du problème
+      selectProblemNotifier.value =
+          null; // Réinitialise la sélection du problème
     }
-    
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -500,59 +507,82 @@ class Ecran {
                     )
                   ],
                 ),
-                Text("Bonjour!\n N'hésitez pas à nous laisser un messages concernant vos plaintes,\n demandes de remboursements,\n questions fréquentes ou problèmes techniques.", 
-                style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 Column(
-                children: [
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Bonjour!",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                    Text("N'hésitez pas à nous laisser un messages",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                    Text("concernant vos plaintes,",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                    Text("demandes de remboursements,",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                    Text("questions fréquentes ou problèmes",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                    Text(" techniques.",
+                        style: TextStyle(fontSize: 20, fontWeight: textWeight))
+                  ],
+                ),
+                SizedBox(height: 15),
+                Column(
+                  children: [
+                    Container(
+                      width: 300,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ValueListenableBuilder<String?>(
+                            valueListenable: selectProblemNotifier,
+                            builder: (context, value, child) {
+                              return DropdownButton<String>(
+                                value: value,
+                                hint: Text(
+                                  "Sélectionnez un problème",
+                                  style: TextStyle(fontWeight: textWeight),
+                                ),
+                                onChanged: (String? newValue) {
+                                  selectProblemNotifier.value = newValue;
+                                },
+                                items: problems.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w500)),
+                                    );
+                                  },
+                                ).toList(),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 12),
+                Column(children: [
                   Container(
                     width: 300,
                     color: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ValueListenableBuilder<String?>(
-                          valueListenable: selectProblemNotifier,
-                          builder: (context, value, child) {
-                            return DropdownButton<String>(
-                              value: value,
-                              hint: Text("Sélectionnez un problème", style: TextStyle(fontWeight: textWeight),),
-                              onChanged: (String? newValue) {
-                                selectProblemNotifier.value = newValue;
-                              },
-                              items: problems.map<DropdownMenuItem<String>>(
-                                (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value, style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500)),
-                                  );
-                                },
-                              ).toList(),
-                            );
-                          },
-                        ),
-                      ],
+                    child: TextField(
+                      controller:
+                          messageController, // Use the controller for the TextField
+                      maxLines: 5, // Allow multiple lines
+                      decoration: InputDecoration(
+                          hintText: "Saisissez votre message...",
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintStyle:
+                              TextStyle(fontSize: 25, fontWeight: textWeight)),
+                      style: TextStyle(fontSize: 25, fontWeight: textWeight),
                     ),
                   ),
-                ],
-              ),
-                SizedBox(height: 10),
-                Column(children: [
-                Container(
-                  width: 300,
-                  color: Colors.white,
-                  child: TextField(
-                    controller: messageController, // Use the controller for the TextField
-                    maxLines: 5, // Allow multiple lines
-                    decoration: InputDecoration(
-                      hintText: "Saisissez votre message...",
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintStyle: TextStyle(fontSize: 25,fontWeight: textWeight)
-                    ),
-                    style: TextStyle(fontSize: 25,fontWeight: textWeight),
-                  ),
-                ),
                   SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -565,7 +595,9 @@ class Ecran {
                           color: Colors.grey.shade300,
                           child: Text('  Valider  ',
                               style: TextStyle(
-                                  color: Colors.grey.shade800, fontSize: 20, fontWeight: textWeight)),
+                                  color: Colors.grey.shade800,
+                                  fontSize: 20,
+                                  fontWeight: textWeight)),
                         ),
                       ),
                     ],
@@ -581,7 +613,10 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade300,
               child: Text(" Conditions Générales d'utilisation  ",
-                  style: TextStyle(color: Colors.grey.shade800, fontSize: 20,fontWeight: textWeight)),
+                  style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 20,
+                      fontWeight: textWeight)),
             ),
           ),
           SizedBox(height: 15),
