@@ -508,7 +508,7 @@ class Ecran {
                   ],
                 ),
                 SizedBox(height: 15),
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Bonjour!",
@@ -574,7 +574,7 @@ class Ecran {
                       controller:
                           messageController, // Use the controller for the TextField
                       maxLines: 5, // Allow multiple lines
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "Saisissez votre message...",
                           filled: true,
                           fillColor: Colors.white,
