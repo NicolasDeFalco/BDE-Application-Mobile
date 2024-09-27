@@ -74,10 +74,9 @@ class Ecran {
                   return AlertDialog(
                     contentPadding: EdgeInsets.zero,
                     content: SizedBox(
-                      height: 120, // Augmentation de la hauteur du Dialog
+                      height: 120,
                       child: Row(
                         children: [
-                          // Image arrondie à gauche
                           Expanded(
                             flex: 1,
                             child: ClipRRect(
@@ -87,16 +86,12 @@ class Ecran {
                                 ),
                                 child: Image.asset(
                                   "assets/bowling.jpg",
-                                  //height: 50,
                                   fit: BoxFit.cover,
-                                  width: MediaQuery.of(context)
-                                      .size
-                                      .width, // La même largeur que l'écran
-                                  height: 110, // Ajustement de la hauteur
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 110,
                                 )),
                           ),
-                          // Texte à droite
-                          Expanded(
+                          const Expanded(
                             flex: 2,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
