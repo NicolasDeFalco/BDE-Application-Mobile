@@ -7,9 +7,9 @@ class Ecran {
   int page = 1;
 
   final List<CardItem> cards = [
-    CardItem(title: 'Card 1'),
-    CardItem(title: 'Card 2'),
-    CardItem(title: 'Card 3'),
+    CardItem(title: 'Card 1', id: 0),
+    CardItem(title: 'Card 2', id: 1),
+    CardItem(title: 'Card 3', id: 2),
     // Add more cards as needed
   ];
 
@@ -66,7 +66,6 @@ class Ecran {
             ),
           ),
           SizedBox(height: 30),
-          SizedBox(height: 15),
           GestureDetector(
             onTap: () {
               showDialog(
@@ -131,149 +130,78 @@ class Ecran {
                 },
               );
             },
-            child: Container(
-              width: 420,
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Image.asset(
-                      "assets/bowling.jpg",
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context)
-                          .size
-                          .width, // La même largeur que l'écran
-                      height: 200,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Bowling",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
-                        style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            child: cardShortDesc(context, "Bowling",
+                "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
+                img: 'assets/bowling.jpg'),
           ),
           SizedBox(height: 30),
           GestureDetector(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    contentPadding: EdgeInsets.zero,
-                    content: SizedBox(
-                      height: 120, // Augmentation de la hauteur du Dialog
-                      child: Row(
-                        children: [
-                          // Image arrondie à gauche
-                          Expanded(
-                            flex: 1,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      contentPadding: EdgeInsets.zero,
+                      content: SizedBox(
+                        height: 120, // Augmentation de la hauteur du Dialog
+                        child: Row(
+                          children: [
+                            // Image arrondie à gauche
+                            Expanded(
+                              flex: 1,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                  child: Image.asset(
+                                    "assets/volley.jpg",
+                                    //height: 50,
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context)
+                                        .size
+                                        .width, // La même largeur que l'écran
+                                    height: 110, // Ajustement de la hauteur
+                                  )),
+                            ),
+                            // Texte à droite
+                            Expanded(
+                              flex: 2,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Tournoi de volley",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      "Tournoi de volley avec pour grand gagnant Lucas!!!",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                child: Image.asset(
-                                  "assets/volley.jpg",
-                                  //height: 50,
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context)
-                                      .size
-                                      .width, // La même largeur que l'écran
-                                  height: 110, // Ajustement de la hauteur
-                                )),
-                          ),
-                          // Texte à droite
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Tournoi de volley",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                    "Tournoi de volley avec pour grand gagnant Lucas!!!",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              );
-            },
-            child: Container(
-              width: 420,
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Image.asset(
-                      "assets/volley.jpg",
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context)
-                          .size
-                          .width, // La même largeur que l'écran
-                      height: 200,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Tournoi de volley",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Tournoi de volley avec pour grand gagnant Lucas!!!",
-                        style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+                    );
+                  },
+                );
+              },
+              child: cardShortDesc(context, "Tournoi de volley",
+                  "Tournoi de volley avec pour grand gagnant Lucas!!!",
+                  img: "assets/volley.jpg")),
         ],
       ),
     );
@@ -292,22 +220,7 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade200,
               child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Mon profil", style: TextStyle(fontSize: 50)),
-                        Container(
-                          height: 5,
-                          width: 240,
-                          color: Color(0xFFFFDB6F),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                mainTitle("Mon profil", 50, 240),
                 SizedBox(height: 20),
                 SizedBox.fromSize(
                   size: const Size(80, 80),
@@ -322,97 +235,9 @@ class Ecran {
                 ),
                 Text("Lucas Decottignies", style: TextStyle(fontSize: 20)),
                 SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("E-mail", style: TextStyle(fontSize: 30)),
-                        Container(
-                          height: 3,
-                          width: 70,
-                          color: Color(0xFFFFDB6F),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 10),
-                Column(children: [
-                  Container(
-                      width: 300,
-                      color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("lucas@gmail.com",
-                              style: TextStyle(
-                                  fontSize: 25, backgroundColor: Colors.white)),
-                        ],
-                      )),
-                  SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Card(
-                          color: Colors.grey.shade300,
-                          child: Text('  Modifier  ',
-                              style: TextStyle(
-                                  color: Colors.grey.shade800, fontSize: 20)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ]),
+                infoUpdate(context, "E-mail", "lucas@gmail.com"),
                 SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Téléphone", style: TextStyle(fontSize: 30)),
-                        Container(
-                          height: 3,
-                          width: 100,
-                          color: Color(0xFFFFDB6F),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 10),
-                Column(children: [
-                  Container(
-                      width: 300,
-                      color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("0644762391",
-                              style: TextStyle(
-                                  fontSize: 25, backgroundColor: Colors.white)),
-                        ],
-                      )),
-                  SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Card(
-                          color: Colors.grey.shade300,
-                          child: Text('  Modifier  ',
-                              style: TextStyle(
-                                  color: Colors.grey.shade800, fontSize: 20)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ]),
+                infoUpdate(context, "Téléphone", "0644762391"),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -433,44 +258,11 @@ class Ecran {
                 SizedBox(height: 15),
                 Column(
                   children: [
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Mot de passe',
-                      ),
-                      controller: password1,
-                    ),
+                    passwordUpdate(password1, 'Mot de passe'),
                     SizedBox(height: 10),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Nouveau mot de passe',
-                      ),
-                      controller: password2,
-                    ),
+                    passwordUpdate(password2, 'Nouveau mot de passe'),
                     SizedBox(height: 10),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Confirmer votre mot de passe',
-                      ),
-                      controller: password3,
-                    ),
+                    passwordUpdate(password3, 'Confirmer votre mot de passe'),
                     SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -504,90 +296,13 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade200,
               child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Mes évenements", style: TextStyle(fontSize: 40)),
-                        Container(
-                          height: 5,
-                          width: 290,
-                          color: Color(0xFFFFDB6F),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                mainTitle("Mes évenements", 40, 290),
                 SizedBox(height: 20),
-                Container(
-                    width: 420,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Image.network(
-                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                            width: MediaQuery.sizeOf(context).width,
-                          ),
-                          const Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Braderie Lille",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
+                cardShortDesc(context, "Braderie Lille",
+                    "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI"),
                 SizedBox(height: 15),
-                Container(
-                    width: 420,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Image.network(
-                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                            width: MediaQuery.sizeOf(context).width,
-                          ),
-                          const Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Foire d'Arras",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
+                cardShortDesc(context, "Foire d'Arras",
+                    "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!"),
               ]),
             ),
           ),
@@ -632,22 +347,7 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade200,
               child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Support", style: TextStyle(fontSize: 50)),
-                        Container(
-                          height: 5,
-                          width: 240,
-                          color: Color(0xFFFFDB6F),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                mainTitle("Support", 50, 240),
                 SizedBox(height: 15),
                 const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -763,6 +463,140 @@ class Ecran {
           SizedBox(height: 15),
         ],
       ),
+    );
+  }
+
+  Widget mainTitle(String type, double textSize, double barsize) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(type, style: TextStyle(fontSize: textSize)),
+            Container(
+              height: 5,
+              width: barsize,
+              color: const Color(0xFFFFDB6F),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget cardShortDesc(BuildContext context, String title, sortDesc,
+      {String img = ""}) {
+    return Container(
+        width: 420,
+        child: Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (img == "")
+                Image.network(
+                  'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
+                  width: MediaQuery.sizeOf(context).width,
+                )
+              else
+                Image.asset(
+                  img,
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context)
+                      .size
+                      .width, // La même largeur que l'écran
+                  height: 200,
+                ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  title,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+
+  Widget infoUpdate(BuildContext context, String type, info) {
+    return Container(
+      width: MediaQuery.sizeOf(context).width,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(type, style: TextStyle(fontSize: 30)),
+                  Container(
+                    height: 3,
+                    width: 100,
+                    color: Color(0xFFFFDB6F),
+                  ),
+                ],
+              )
+            ],
+          ),
+          SizedBox(height: 10),
+          Column(children: [
+            Container(
+                width: 300,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(info,
+                        style: TextStyle(
+                            fontSize: 25, backgroundColor: Colors.white)),
+                  ],
+                )),
+            SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Card(
+                    color: Colors.grey.shade300,
+                    child: Text('  Modifier  ',
+                        style: TextStyle(
+                            color: Colors.grey.shade800, fontSize: 20)),
+                  ),
+                ),
+              ],
+            ),
+          ])
+        ],
+      ),
+    );
+  }
+
+  Widget passwordUpdate(TextEditingController controler, String step) {
+    return TextField(
+      obscureText: true,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        fillColor: Colors.white,
+        filled: true,
+        hintText: step,
+      ),
+      controller: controler,
     );
   }
 }

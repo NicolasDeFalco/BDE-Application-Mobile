@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
   final String title;
+  final int id;
 
-  CardItem({required this.title});
+  CardItem({required this.title, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CardItem extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Image.network(
-                    'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/300',
+                    'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/300?random=${id.toString()}',
                     fit: BoxFit.cover,
                     width: 1000.0),
                 Positioned(
