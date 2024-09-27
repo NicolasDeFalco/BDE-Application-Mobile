@@ -11,22 +11,11 @@ class MenuJeux extends StatefulWidget {
 }
 
 class _Dames extends State<MenuJeux> {
-  int _selectedIndex = 0; // Variable pour suivre l'index sélectionné
-
-  /*
-    Cette variable va contenire toute les pages
-    que l'on pourait voir a l'acueil de l'appli.
-
-    Cela nous évite de refaire un nouvelle écran a 
-    chaque fois
-  */
+  int _selectedIndex = 0; 
   Ecran ecran = new Ecran();
 
   // Méthode pour gérer la sélection des éléments de la bottom navigation bar
   void _onItemTapped(int index) {
-    /*
-      Ceci nous permetera de modifier l'affichage
-    */
     setState(() {
       ecran.setPage(index);
     });
@@ -49,8 +38,8 @@ class _Dames extends State<MenuJeux> {
           label: 'Mail',
         ),
       ],
-      currentIndex: _selectedIndex, // L'index actuellement sélectionné
-      selectedItemColor: Colors.brown, // Couleur de l'élément sélectionné
+      currentIndex: _selectedIndex, 
+      selectedItemColor: Colors.brown, 
       onTap: _onItemTapped, // Appelée lors de la sélection d'un élément
     );
   }

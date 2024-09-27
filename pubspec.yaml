@@ -42,6 +42,7 @@ dependencies:
   connectivity: ^3.0.3
   flip_card: ^0.7.0
   carousel_slider: ^5.0.0
+  connectivity_plus: ^3.0.3
 
 dev_dependencies:
   flutter_test:

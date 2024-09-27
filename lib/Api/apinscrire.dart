@@ -1,0 +1,191 @@
+import 'dart:convert';
+import 'package:bde_app/Vue/connexion.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'dart:convert' as convert;
+import 'dart:developer';
+
+
+class Inscription extends StatefulWidget {
+  const Inscription({super.key, required this.title});
+
+
+  final String title;
+
+  @override
+  InscriptionState createState() => InscriptionState();
+}
+
+
+class InscriptionState extends State<Inscription> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = "";
+  String _password = "";
+  String _password2 = "";
+  String _nom = "";
+  String _prenom = "";
+
+  Future<http.Response> createAccount(
+      String email, String password, String nom, String prenom) {
+    return http.post(
+      Uri.parse(
+          'https://s3-4664.nuage-peda.fr/BDEAPI/public/api/users'),
+      headers: <String, String>{
+        'Content-Type': 'application/ld+json',
+      },
+      body: convert.jsonEncode(<String, dynamic>{
+        "email": email,
+        "password": password,
+        "nom": nom,
+        "prenom": prenom,
+        "evenements": [],
+      }),
+    );
+  }
+
+  void checkAccount() async {
+    var connexion = await createAccount(_email, _password, _nom, _prenom);
+    log(connexion.statusCode.toString());
+    log(connexion.body.toString());
+    if (connexion.statusCode == 201 || connexion.statusCode == 500) {
+      Navigator.pushReplacementNamed(context, '/login');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Compte crée'),
+      ));
+    } else if (connexion.statusCode == 422) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Login déjà utilisé'),
+      ));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Image.asset(
+                "assets/epsi.png",
+                height: 50,
+              ),
+              Image.asset(
+                "assets/wis.png",
+                height: 50,
+              )
+            ],
+          ),
+          backgroundColor: Colors.white,
+        ),
+      body: Center(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "Email"),
+                  validator: (valeur) {
+                    if (valeur == null || valeur.isEmpty) {
+                      return 'Veuillez entrer votre email';
+                    } else {
+                      _email = valeur.toString();
+                    }
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: const InputDecoration(labelText: "Mot de passe"),
+                  validator: (valeur) {
+                    if (valeur == null || valeur.isEmpty) {
+                      return 'Veuillez entrer votre mot de passe';
+                    } else {
+                      _password = valeur.toString();
+                    }
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      labelText: "Confirmation du mot de passe"),
+                  validator: (valeur) {
+                    if (valeur == null || valeur.isEmpty) {
+                      return 'Veuillez entrer votre mot de passe';
+                    } else if (valeur != _password) {
+                      return 'Mots de passe différents';
+                    } else {
+                      _password2 = valeur.toString();
+                    }
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "Nom"),
+                  validator: (valeur) {
+                    if (valeur == null || valeur.isEmpty) {
+                      return 'Veuillez entrer nom';
+                    } else {
+                      _nom = valeur.toString();
+                    }
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "Prénom"),
+                  validator: (valeur) {
+                    if (valeur == null || valeur.isEmpty) {
+                      return 'Veuillez entrer votre prénom';
+                    } else {
+                      _prenom = valeur.toString();
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      checkAccount();
+                    }
+                  },
+                  child: const Text("S'inscrire"),
+                ),
+              ),
+              SizedBox(height: 20),
+                ElevatedButton(
+                  style:
+                      ElevatedButton.styleFrom(fixedSize: const Size(130, 40)),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ConnectPage(title: 'Inscription'),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Déjà inscrit ?",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Vue/home.dart';
+import 'Vue/connexion.dart';
+import 'Api/apinscrire.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const MenuJeux(title: 'Home'),
+      home: const ConnectPage(title: 'Home'),
       routes: <String, WidgetBuilder>{
         '/menujeux': (BuildContext context) => MenuJeux(title: ''),
-        '/route2': (BuildContext context) => MenuJeux(title: ''),
+        '/login': (BuildContext context) => ConnectPage(title: ''),
+        '/signin': (BuildContext context) => Inscription(title: ''),
       },
     );
   }
