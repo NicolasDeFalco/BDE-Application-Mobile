@@ -4,7 +4,7 @@ import 'package:bde_app/Vue/page/card.dart';
 
 class Ecran {
   // L'index de la page
-  int page = 1;
+  int page = 0;
 
   final List<CardItem> cards = [
     CardItem(title: 'Card 1'),
@@ -66,7 +66,68 @@ class Ecran {
             ),
           ),
           SizedBox(height: 30),
-          Container(
+          SizedBox(height: 15),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    contentPadding: EdgeInsets.zero,
+                    content: SizedBox(
+                      height: 120, // Augmentation de la hauteur du Dialog
+                      child: Row(
+                        children: [
+                          // Image arrondie à gauche
+                          Expanded(
+                            flex: 1,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                              ),
+                              child: Image.network(
+                                'https://picsum.photos/200/200',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          // Texte à droite
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Braderie Lille",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
               width: 420,
               child: Card(
                 elevation: 4,
@@ -77,11 +138,11 @@ class Ecran {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Image.network(
-                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                      width: MediaQuery.sizeOf(context).width,
+                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt()}/200',
+                      width: MediaQuery.of(context).size.width,
                     ),
                     const Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Braderie Lille",
                         style: TextStyle(
@@ -98,9 +159,71 @@ class Ecran {
                     ),
                   ],
                 ),
-              )),
+              ),
+            ),
+          ),
           SizedBox(height: 30),
-          Container(
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    contentPadding: EdgeInsets.zero,
+                    content: SizedBox(
+                      height: 120, // Augmentation de la hauteur du Dialog
+                      child: Row(
+                        children: [
+                          // Image arrondie à gauche
+                          Expanded(
+                            flex: 1,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                              ),
+                              child: Image.network(
+                                'https://picsum.photos/200/200',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          // Texte à droite
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Foire d'Arras",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
               width: 420,
               child: Card(
                 elevation: 4,
@@ -111,11 +234,11 @@ class Ecran {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Image.network(
-                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                      width: MediaQuery.sizeOf(context).width,
+                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt()}/200',
+                      width: MediaQuery.of(context).size.width,
                     ),
                     const Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Foire d'Arras",
                         style: TextStyle(
@@ -123,7 +246,7 @@ class Ecran {
                       ),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
                         style: TextStyle(
@@ -132,7 +255,9 @@ class Ecran {
                     ),
                   ],
                 ),
-              ))
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -465,24 +590,17 @@ class Ecran {
   }
 
   Widget mailMenu(BuildContext context) {
-    const FontWeight textWeight = FontWeight.bold;
+    const FontWeight textWeight = FontWeight.bold; 
     final TextEditingController messageController = TextEditingController();
-    final ValueNotifier<String?> selectProblemNotifier =
-        ValueNotifier<String?>(null);
-    List<String> problems = [
-      "Problème technique",
-      "Remboursement",
-      "Questions",
-      "Plaintes"
-    ];
-
+    final ValueNotifier<String?> selectProblemNotifier = ValueNotifier<String?>(null);
+    List<String> problems = ["Problème technique","Remboursement","Questions","Plaintes"];
+    
     // Méthode pour réinitialiser les valeurs
     void resetForm() {
       messageController.clear(); // Réinitialise le champ de texte
-      selectProblemNotifier.value =
-          null; // Réinitialise la sélection du problème
+      selectProblemNotifier.value = null; // Réinitialise la sélection du problème
     }
-
+    
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -507,82 +625,59 @@ class Ecran {
                     )
                   ],
                 ),
-                SizedBox(height: 15),
+                Text("Bonjour!\n N'hésitez pas à nous laisser un messages concernant vos plaintes,\n demandes de remboursements,\n questions fréquentes ou problèmes techniques.", 
+                style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                SizedBox(height: 10),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Bonjour!",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                    Text("N'hésitez pas à nous laisser un messages",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                    Text("concernant vos plaintes,",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                    Text("demandes de remboursements,",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                    Text("questions fréquentes ou problèmes",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight)),
-                    Text(" techniques.",
-                        style: TextStyle(fontSize: 20, fontWeight: textWeight))
-                  ],
-                ),
-                SizedBox(height: 15),
-                Column(
-                  children: [
-                    Container(
-                      width: 300,
-                      color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ValueListenableBuilder<String?>(
-                            valueListenable: selectProblemNotifier,
-                            builder: (context, value, child) {
-                              return DropdownButton<String>(
-                                value: value,
-                                hint: Text(
-                                  "Sélectionnez un problème",
-                                  style: TextStyle(fontWeight: textWeight),
-                                ),
-                                onChanged: (String? newValue) {
-                                  selectProblemNotifier.value = newValue;
-                                },
-                                items: problems.map<DropdownMenuItem<String>>(
-                                  (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value,
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.w500)),
-                                    );
-                                  },
-                                ).toList(),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 12),
-                Column(children: [
+                children: [
                   Container(
                     width: 300,
                     color: Colors.white,
-                    child: TextField(
-                      controller:
-                          messageController, // Use the controller for the TextField
-                      maxLines: 5, // Allow multiple lines
-                      decoration: InputDecoration(
-                          hintText: "Saisissez votre message...",
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintStyle:
-                              TextStyle(fontSize: 25, fontWeight: textWeight)),
-                      style: TextStyle(fontSize: 25, fontWeight: textWeight),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ValueListenableBuilder<String?>(
+                          valueListenable: selectProblemNotifier,
+                          builder: (context, value, child) {
+                            return DropdownButton<String>(
+                              value: value,
+                              hint: Text("Sélectionnez un problème", style: TextStyle(fontWeight: textWeight),),
+                              onChanged: (String? newValue) {
+                                selectProblemNotifier.value = newValue;
+                              },
+                              items: problems.map<DropdownMenuItem<String>>(
+                                (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value, style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500)),
+                                  );
+                                },
+                              ).toList(),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
+                ],
+              ),
+                SizedBox(height: 10),
+                Column(children: [
+                Container(
+                  width: 300,
+                  color: Colors.white,
+                  child: TextField(
+                    controller: messageController, // Use the controller for the TextField
+                    maxLines: 5, // Allow multiple lines
+                    decoration: InputDecoration(
+                      hintText: "Saisissez votre message...",
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintStyle: TextStyle(fontSize: 25,fontWeight: textWeight)
+                    ),
+                    style: TextStyle(fontSize: 25,fontWeight: textWeight),
+                  ),
+                ),
                   SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -595,9 +690,7 @@ class Ecran {
                           color: Colors.grey.shade300,
                           child: Text('  Valider  ',
                               style: TextStyle(
-                                  color: Colors.grey.shade800,
-                                  fontSize: 20,
-                                  fontWeight: textWeight)),
+                                  color: Colors.grey.shade800, fontSize: 20, fontWeight: textWeight)),
                         ),
                       ),
                     ],
@@ -613,10 +706,7 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade300,
               child: Text(" Conditions Générales d'utilisation  ",
-                  style: TextStyle(
-                      color: Colors.grey.shade800,
-                      fontSize: 20,
-                      fontWeight: textWeight)),
+                  style: TextStyle(color: Colors.grey.shade800, fontSize: 20,fontWeight: textWeight)),
             ),
           ),
           SizedBox(height: 15),
