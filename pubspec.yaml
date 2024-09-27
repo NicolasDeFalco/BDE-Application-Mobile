@@ -69,6 +69,11 @@ flutter:
   assets:
     - assets/epsi.png
     - assets/wis.png
+    - assets/bowling.jpg
+    - assets/volley.jpg
+    - assets/laserGame.jpg
+    - assets/paintBall.jpg
+    - assets/footSalle.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

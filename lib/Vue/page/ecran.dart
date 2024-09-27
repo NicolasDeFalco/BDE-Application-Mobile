@@ -4,7 +4,7 @@ import 'package:bde_app/Vue/page/card.dart';
 
 class Ecran {
   // L'index de la page
-  int page = 0;
+  int page = 1;
 
   final List<CardItem> cards = [
     CardItem(title: 'Card 1'),
@@ -82,15 +82,19 @@ class Ecran {
                           Expanded(
                             flex: 1,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                              ),
-                              child: Image.network(
-                                'https://picsum.photos/200/200',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20),
+                                ),
+                                child: Image.asset(
+                                  "assets/bowling.jpg",
+                                  //height: 50,
+                                  fit: BoxFit.cover,
+                                  width: MediaQuery.of(context)
+                                      .size
+                                      .width, // La même largeur que l'écran
+                                  height: 110, // Ajustement de la hauteur
+                                )),
                           ),
                           // Texte à droite
                           Expanded(
@@ -102,7 +106,7 @@ class Ecran {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Braderie Lille",
+                                    "Bowling",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -110,7 +114,7 @@ class Ecran {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI",
+                                    "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -137,14 +141,18 @@ class Ecran {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Image.network(
-                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt()}/200',
-                      width: MediaQuery.of(context).size.width,
+                    Image.asset(
+                      "assets/bowling.jpg",
+                      fit: BoxFit.cover,
+                                  width: MediaQuery.of(context)
+                                      .size
+                                      .width, // La même largeur que l'écran
+                                  height: 200,
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Braderie Lille",
+                        "Bowling",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -152,7 +160,7 @@ class Ecran {
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI",
+                        "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
                         style: TextStyle(
                             fontSize: 10, fontWeight: FontWeight.bold),
                       ),
@@ -182,10 +190,15 @@ class Ecran {
                                 topLeft: Radius.circular(20),
                                 bottomLeft: Radius.circular(20),
                               ),
-                              child: Image.network(
-                                'https://picsum.photos/200/200',
-                                fit: BoxFit.cover,
-                              ),
+                              child: Image.asset(
+                                  "assets/volley.jpg",
+                                  //height: 50,
+                                  fit: BoxFit.cover,
+                                  width: MediaQuery.of(context)
+                                      .size
+                                      .width, // La même largeur que l'écran
+                                  height: 110, // Ajustement de la hauteur
+                                )
                             ),
                           ),
                           // Texte à droite
@@ -198,7 +211,7 @@ class Ecran {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Foire d'Arras",
+                                    "Tournoi de volley",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -206,7 +219,7 @@ class Ecran {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                    "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
+                                    "Tournoi de volley avec pour grand gagnant Lucas!!!",
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -233,14 +246,18 @@ class Ecran {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Image.network(
-                      'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt()}/200',
-                      width: MediaQuery.of(context).size.width,
+                    Image.asset(
+                      "assets/volley.jpg",
+                      fit: BoxFit.cover,
+                                  width: MediaQuery.of(context)
+                                      .size
+                                      .width, // La même largeur que l'écran
+                                  height: 200,
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Foire d'Arras",
+                        "Tournoi de volley",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -248,7 +265,7 @@ class Ecran {
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
+                        "Tournoi de volley avec pour grand gagnant Lucas!!!",
                         style: TextStyle(
                             fontSize: 10, fontWeight: FontWeight.bold),
                       ),
@@ -590,17 +607,24 @@ class Ecran {
   }
 
   Widget mailMenu(BuildContext context) {
-    const FontWeight textWeight = FontWeight.bold; 
+    const FontWeight textWeight = FontWeight.bold;
     final TextEditingController messageController = TextEditingController();
-    final ValueNotifier<String?> selectProblemNotifier = ValueNotifier<String?>(null);
-    List<String> problems = ["Problème technique","Remboursement","Questions","Plaintes"];
-    
+    final ValueNotifier<String?> selectProblemNotifier =
+        ValueNotifier<String?>(null);
+    List<String> problems = [
+      "Problème technique",
+      "Remboursement",
+      "Questions",
+      "Plaintes"
+    ];
+
     // Méthode pour réinitialiser les valeurs
     void resetForm() {
       messageController.clear(); // Réinitialise le champ de texte
-      selectProblemNotifier.value = null; // Réinitialise la sélection du problème
+      selectProblemNotifier.value =
+          null; // Réinitialise la sélection du problème
     }
-    
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -625,59 +649,67 @@ class Ecran {
                     )
                   ],
                 ),
-                Text("Bonjour!\n N'hésitez pas à nous laisser un messages concernant vos plaintes,\n demandes de remboursements,\n questions fréquentes ou problèmes techniques.", 
-                style: TextStyle(fontSize: 20, fontWeight: textWeight)),
+                Text(
+                    "Bonjour!\n N'hésitez pas à nous laisser un messages concernant vos plaintes,\n demandes de remboursements,\n questions fréquentes ou problèmes techniques.",
+                    style: TextStyle(fontSize: 20, fontWeight: textWeight)),
                 SizedBox(height: 10),
                 Column(
-                children: [
+                  children: [
+                    Container(
+                      width: 300,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ValueListenableBuilder<String?>(
+                            valueListenable: selectProblemNotifier,
+                            builder: (context, value, child) {
+                              return DropdownButton<String>(
+                                value: value,
+                                hint: Text(
+                                  "Sélectionnez un problème",
+                                  style: TextStyle(fontWeight: textWeight),
+                                ),
+                                onChanged: (String? newValue) {
+                                  selectProblemNotifier.value = newValue;
+                                },
+                                items: problems.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value,
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w500)),
+                                    );
+                                  },
+                                ).toList(),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Column(children: [
                   Container(
                     width: 300,
                     color: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ValueListenableBuilder<String?>(
-                          valueListenable: selectProblemNotifier,
-                          builder: (context, value, child) {
-                            return DropdownButton<String>(
-                              value: value,
-                              hint: Text("Sélectionnez un problème", style: TextStyle(fontWeight: textWeight),),
-                              onChanged: (String? newValue) {
-                                selectProblemNotifier.value = newValue;
-                              },
-                              items: problems.map<DropdownMenuItem<String>>(
-                                (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value, style: TextStyle(fontSize: 25,fontWeight: FontWeight.w500)),
-                                  );
-                                },
-                              ).toList(),
-                            );
-                          },
-                        ),
-                      ],
+                    child: TextField(
+                      controller:
+                          messageController, // Use the controller for the TextField
+                      maxLines: 5, // Allow multiple lines
+                      decoration: InputDecoration(
+                          hintText: "Saisissez votre message...",
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintStyle:
+                              TextStyle(fontSize: 25, fontWeight: textWeight)),
+                      style: TextStyle(fontSize: 25, fontWeight: textWeight),
                     ),
                   ),
-                ],
-              ),
-                SizedBox(height: 10),
-                Column(children: [
-                Container(
-                  width: 300,
-                  color: Colors.white,
-                  child: TextField(
-                    controller: messageController, // Use the controller for the TextField
-                    maxLines: 5, // Allow multiple lines
-                    decoration: InputDecoration(
-                      hintText: "Saisissez votre message...",
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintStyle: TextStyle(fontSize: 25,fontWeight: textWeight)
-                    ),
-                    style: TextStyle(fontSize: 25,fontWeight: textWeight),
-                  ),
-                ),
                   SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -690,7 +722,9 @@ class Ecran {
                           color: Colors.grey.shade300,
                           child: Text('  Valider  ',
                               style: TextStyle(
-                                  color: Colors.grey.shade800, fontSize: 20, fontWeight: textWeight)),
+                                  color: Colors.grey.shade800,
+                                  fontSize: 20,
+                                  fontWeight: textWeight)),
                         ),
                       ),
                     ],
@@ -706,7 +740,10 @@ class Ecran {
             child: Card(
               color: Colors.grey.shade300,
               child: Text(" Conditions Générales d'utilisation  ",
-                  style: TextStyle(color: Colors.grey.shade800, fontSize: 20,fontWeight: textWeight)),
+                  style: TextStyle(
+                      color: Colors.grey.shade800,
+                      fontSize: 20,
+                      fontWeight: textWeight)),
             ),
           ),
           SizedBox(height: 15),
