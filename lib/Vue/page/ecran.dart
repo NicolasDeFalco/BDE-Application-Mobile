@@ -75,10 +75,9 @@ class Ecran {
                   return AlertDialog(
                     contentPadding: EdgeInsets.zero,
                     content: SizedBox(
-                      height: 120, // Augmentation de la hauteur du Dialog
+                      height: 120,
                       child: Row(
                         children: [
-                          // Image arrondie à gauche
                           Expanded(
                             flex: 1,
                             child: ClipRRect(
@@ -88,16 +87,12 @@ class Ecran {
                                 ),
                                 child: Image.asset(
                                   "assets/bowling.jpg",
-                                  //height: 50,
                                   fit: BoxFit.cover,
-                                  width: MediaQuery.of(context)
-                                      .size
-                                      .width, // La même largeur que l'écran
-                                  height: 110, // Ajustement de la hauteur
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 110,
                                 )),
                           ),
-                          // Texte à droite
-                          Expanded(
+                          const Expanded(
                             flex: 2,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -144,10 +139,10 @@ class Ecran {
                     Image.asset(
                       "assets/bowling.jpg",
                       fit: BoxFit.cover,
-                                  width: MediaQuery.of(context)
-                                      .size
-                                      .width, // La même largeur que l'écran
-                                  height: 200,
+                      width: MediaQuery.of(context)
+                          .size
+                          .width, // La même largeur que l'écran
+                      height: 200,
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
@@ -186,11 +181,11 @@ class Ecran {
                           Expanded(
                             flex: 1,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                              ),
-                              child: Image.asset(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20),
+                                ),
+                                child: Image.asset(
                                   "assets/volley.jpg",
                                   //height: 50,
                                   fit: BoxFit.cover,
@@ -198,11 +193,10 @@ class Ecran {
                                       .size
                                       .width, // La même largeur que l'écran
                                   height: 110, // Ajustement de la hauteur
-                                )
-                            ),
+                                )),
                           ),
                           // Texte à droite
-                          Expanded(
+                          const Expanded(
                             flex: 2,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -249,10 +243,10 @@ class Ecran {
                     Image.asset(
                       "assets/volley.jpg",
                       fit: BoxFit.cover,
-                                  width: MediaQuery.of(context)
-                                      .size
-                                      .width, // La même largeur que l'écran
-                                  height: 200,
+                      width: MediaQuery.of(context)
+                          .size
+                          .width, // La même largeur que l'écran
+                      height: 200,
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
@@ -521,42 +515,69 @@ class Ecran {
                     )
                   ],
                 ),
-                SizedBox(height: 20),
-                Container(
-                    width: 420,
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Image.network(
-                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                            width: MediaQuery.sizeOf(context).width,
-                          ),
-                          const Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Braderie Lille",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Sortie à la braderie de Lille avec toute l'équipe des 3ème année de l'EPSI",
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
                 SizedBox(height: 15),
-                Container(
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          content: SizedBox(
+                            height: 120,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                      child: Image.asset(
+                                        "assets/bowling.jpg",
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: 110,
+                                      )),
+                                ),
+                                const Expanded(
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Bowling",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Container(
                     width: 420,
                     child: Card(
                       elevation: 4,
@@ -566,14 +587,18 @@ class Ecran {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Image.network(
-                            'https://picsum.photos/${MediaQuery.sizeOf(context).width.toInt().toString()}/200',
-                            width: MediaQuery.sizeOf(context).width,
+                          Image.asset(
+                            "assets/bowling.jpg",
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(context)
+                                .size
+                                .width, // La même largeur que l'écran
+                            height: 200,
                           ),
                           const Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Text(
-                              "Foire d'Arras",
+                              "Bowling",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -581,14 +606,121 @@ class Ecran {
                           const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              "Rendez-vous à la foire d'Arras, au rendez-vous pour rire!!!",
+                              "Sortie au bowling d'Arras avec toute l'équipe des 3ème année de l'EPSI",
                               style: TextStyle(
                                   fontSize: 10, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
                       ),
-                    )),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          content: SizedBox(
+                            height: 120, // Augmentation de la hauteur du Dialog
+                            child: Row(
+                              children: [
+                                // Image arrondie à gauche
+                                Expanded(
+                                  flex: 1,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                      child: Image.asset(
+                                        "assets/volley.jpg",
+                                        //height: 50,
+                                        fit: BoxFit.cover,
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width, // La même largeur que l'écran
+                                        height: 110, // Ajustement de la hauteur
+                                      )),
+                                ),
+                                // Texte à droite
+                                const Expanded(
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Tournoi de volley",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          "Tournoi de volley avec pour grand gagnant Lucas!!!",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Container(
+                    width: 420,
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.asset(
+                            "assets/volley.jpg",
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(context)
+                                .size
+                                .width, // La même largeur que l'écran
+                            height: 200,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Tournoi de volley",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Tournoi de volley avec pour grand gagnant Lucas!!!",
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ]),
             ),
           ),
